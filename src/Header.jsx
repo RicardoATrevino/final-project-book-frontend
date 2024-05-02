@@ -3,9 +3,18 @@ import { Link } from "react-router-dom";
 export function Header() {
   return (
     <nav>
-      <Link to="/signup">Signup</Link>
-      <br></br>
-      <Link to="/">Home</Link>
+      <Link to="/" className="HomePage">
+        | Home |
+      </Link>
+      <Link to="/signup" className="Signup">
+        | Signup |
+      </Link>
+      <Link to="/login" className="loginlogout">
+        | Log In |
+      </Link>
+      <Link to="/logout" className="loginlogout">
+        | Log Out |
+      </Link>
     </nav>
   );
 }

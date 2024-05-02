@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 
 export function Content() {
@@ -21,13 +21,25 @@ export function Content() {
   return (
     <div>
       <Routes>
-        <Route path="/" />
+        <Route
+          path="/"
+          element={
+            <div>
+              <h1>Welcome to The Book website</h1>
+            </div>
+          }
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
         <Route path="/books" element={<BooksIndex books={books} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <nav>
+        <Link to={"/books"} className="BooksLink">
+          | Books |
+        </Link>
+      </nav>
     </div>
   );
 }
