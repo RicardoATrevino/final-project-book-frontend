@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-black text-white ">
       <BrowserRouter>
         <Header />
         <Content />

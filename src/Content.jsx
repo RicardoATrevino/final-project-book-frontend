@@ -19,13 +19,13 @@ export function Content() {
 
   useEffect(handleIndexBooks, []);
   return (
-    <div>
+    <div className="text-center space-y-5 font-serif">
       <Routes>
         <Route
           path="/"
           element={
             <div>
-              <h1>Welcome to The Book website</h1>
+              <h1 className="py-5">Welcome to The Book website</h1>
             </div>
           }
         />
