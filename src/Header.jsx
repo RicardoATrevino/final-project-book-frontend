@@ -7,10 +7,10 @@ export function Header() {
         | Home |
       </Link>
       <Link to="/signup" className="">
-        | Signup |
+        | Sign Up |
       </Link>
       <Link to="/login" className="">
-        | Log In |
+        | Login |
       </Link>
       <Link to="/logout" className="">
         | Log Out |
