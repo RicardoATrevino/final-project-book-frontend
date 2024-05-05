@@ -8,10 +8,20 @@ import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import { Modal } from "./Modal";
 import { BooksShow } from "./BooksShow";
+import FavoritedShow from "./FavoritedShow";
 
 export function Content() {
   const [isBooksShowVisible, setIsBooksShowVisible] = useState(false);
   const [currentBook, setCurrentBook] = useState({});
+
+  const [Favorited, setFavorited] = useState([]);
+  const handleShowFavorited = () => {
+    console.log("handleShowFavorited");
+    axios.get("http://localhost:3000/favorited.json").then((response) => {
+      console.log(response.data);
+      setFavorited(response.data);
+    });
+  };
 
   const handleShowBook = (book) => {
     console.log("handleShowBook", book);
@@ -34,13 +44,14 @@ export function Content() {
   };
 
   useEffect(handleIndexBooks, []);
+  useEffect(handleShowFavorited, []);
   return (
     <div className="text-center space-y-5 font-serif">
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/favorited" Favorited={Favorited} element={<FavoritedShow />} />
         <Route
           path="/"
           element={
@@ -62,6 +73,7 @@ export function Content() {
         <Link to={"/books"} className="BooksLink">
           | Books |
         </Link>
+        <Link to={"/favorited"}> |Your Favorites! |</Link>
       </nav>
       <Modal show={isBooksShowVisible} onClose={handleClose}>
         <BooksShow book={currentBook} />
