@@ -5,23 +5,15 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
 import { Routes, Route, Link } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
 import NotFound from "./NotFound";
 import { Modal } from "./Modal";
 import { BooksShow } from "./BooksShow";
-import FavoritedShow from "./FavoritedShow";
+import { FavoritedShow } from "./FavoritedShow";
 
 export function Content() {
   const [isBooksShowVisible, setIsBooksShowVisible] = useState(false);
   const [currentBook, setCurrentBook] = useState({});
-
-  const [Favorited, setFavorited] = useState([]);
-  const handleShowFavorited = () => {
-    console.log("handleShowFavorited");
-    axios.get("http://localhost:3000/favorited.json").then((response) => {
-      console.log(response.data);
-      setFavorited(response.data);
-    });
-  };
 
   const handleShowBook = (book) => {
     console.log("handleShowBook", book);
@@ -44,14 +36,13 @@ export function Content() {
   };
 
   useEffect(handleIndexBooks, []);
-  useEffect(handleShowFavorited, []);
   return (
     <div className="text-center space-y-5 font-serif">
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
-        <Route path="/favorited" Favorited={Favorited} element={<FavoritedShow />} />
+        <Route path="/favorited" element={<FavoritedShow />} />
         <Route
           path="/"
           element={
