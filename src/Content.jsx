@@ -6,8 +6,24 @@ import { Login } from "./Login";
 import { LogoutLink } from "./LogoutLink";
 import { Routes, Route, Link } from "react-router-dom";
 import NotFound from "./NotFound";
+import { Modal } from "./Modal";
+import { BooksShow } from "./BooksShow";
 
 export function Content() {
+  const [isBooksShowVisible, setIsBooksShowVisible] = useState(false);
+  const [currentBook, setCurrentBook] = useState({});
+
+  const handleShowBook = (book) => {
+    console.log("handleShowBook", book);
+    setIsBooksShowVisible(true);
+    setCurrentBook(book);
+  };
+
+  const handleClose = () => {
+    console.log("handleClose");
+    setIsBooksShowVisible(false);
+  };
+
   const [books, setBooks] = useState([]);
   const handleIndexBooks = () => {
     console.log("handleIndexBooks");
@@ -21,6 +37,10 @@ export function Content() {
   return (
     <div className="text-center space-y-5 font-serif">
       <Routes>
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/logout" element={<LogoutLink />} />
+        <Route path="*" element={<NotFound />} />
         <Route
           path="/"
           element={
@@ -29,17 +49,23 @@ export function Content() {
             </div>
           }
         />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/logout" element={<LogoutLink />} />
-        <Route path="/books" element={<BooksIndex books={books} />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path="/books"
+          element={
+            <div>
+              <BooksIndex books={books} onShowBook={handleShowBook} />
+            </div>
+          }
+        />
       </Routes>
       <nav>
         <Link to={"/books"} className="BooksLink">
           | Books |
         </Link>
       </nav>
+      <Modal show={isBooksShowVisible} onClose={handleClose}>
+        <BooksShow book={currentBook} />
+      </Modal>
     </div>
   );
 }
