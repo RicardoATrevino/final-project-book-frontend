@@ -12,8 +12,10 @@ export function Header() {
       <Link to="/login" className="">
         | Login |
       </Link>
-      <Link to="/logout" className="">
-        | Log Out |
+      <Link to="/logout">| Log Out |</Link>
+
+      <Link to={"/favorited"} className="text-right">
+        |Your Favorites! |
       </Link>
     </nav>
   );

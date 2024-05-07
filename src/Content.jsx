@@ -10,6 +10,7 @@ import NotFound from "./NotFound";
 import { Modal } from "./Modal";
 import { BooksShow } from "./BooksShow";
 import { FavoritedShow } from "./FavoritedShow";
+import SearchBar from "./SearchBar";
 
 export function Content() {
   const [isBooksShowVisible, setIsBooksShowVisible] = useState(false);
@@ -38,6 +39,7 @@ export function Content() {
   useEffect(handleIndexBooks, []);
   return (
     <div className="text-center space-y-5 font-serif">
+      <SearchBar />
       <Routes>
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
@@ -64,7 +66,6 @@ export function Content() {
         <Link to={"/books"} className="BooksLink">
           | Books |
         </Link>
-        <Link to={"/favorited"}> |Your Favorites! |</Link>
       </nav>
       <Modal show={isBooksShowVisible} onClose={handleClose}>
         <BooksShow book={currentBook} />
