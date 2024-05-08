@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import BooksIndex from "./BooksIndex";
 
-export default function SearchBar() {
-  return <div></div>;
-}
+export default function SearchBar() {}

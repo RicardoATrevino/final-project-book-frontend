@@ -16,7 +16,12 @@ function AddToFavoritesButton({ itemId }) {
       });
   };
 
-  return <button onClick={addToFavorites}>Add to Favorites</button>;
+  return (
+    <button onClick={addToFavorites}>
+      {" "}
+      <div className=""> | Favorite</div>
+    </button>
+  );
 }
 
 export default AddToFavoritesButton;
