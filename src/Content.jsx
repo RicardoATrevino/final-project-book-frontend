@@ -67,7 +67,7 @@ export function Content() {
         </Link>
       </nav>
       <Modal show={isBooksShowVisible} onClose={handleClose}>
-        <BooksShow book={currentBook} />
+        <BooksShow books={currentBook} />
       </Modal>
     </div>
   );

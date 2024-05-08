@@ -15,7 +15,7 @@ export default function BooksIndex(props) {
       <input
         className="text-black "
         type="text"
-        list="titles"
+        list="title"
         value={searchFilter}
         onChange={(event) => setSearchFilter(event.target.value)}
       />
