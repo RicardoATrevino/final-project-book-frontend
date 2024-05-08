@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import BooksIndex from "./BooksIndex.1";
+import BooksIndex from "./BooksIndex";
 import useState from "react";
 
 export default function SearchBar(props) {
