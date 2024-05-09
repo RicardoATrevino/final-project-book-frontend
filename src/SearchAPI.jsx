@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+import AddToFavoritesButton from "./FavoritedItems";
 
 function SearchAPI() {
   const [query, setQuery] = useState("");
-  const [searchResult, setSearchResult] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   const handleSearch = () => {
     axios
@@ -29,8 +30,14 @@ function SearchAPI() {
       />
       <button onClick={handleSearch}>Search</button>
 
-      {/* Render search results */}
-      <div>{searchResult}</div>
+      {searchResult.map((book) => (
+        <div key={book.key}>
+          <p>
+            {book.title} - by: {book.author_name}
+          </p>
+          <p>Published: {book.publish_year}</p>
+        </div>
+      ))}
     </div>
   );
 }

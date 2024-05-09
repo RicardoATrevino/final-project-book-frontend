@@ -65,7 +65,7 @@ export function Content() {
         />
       </Routes>
       <nav>
-        <Link to={"/searchapi"}> SEARCH API HERE</Link>
+        <Link to={"/searchapi"}> Alternate Search! |</Link>
         <Link to={"/books"} className="BooksLink">
           | Books |
         </Link>
