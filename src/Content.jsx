@@ -10,6 +10,7 @@ import NotFound from "./NotFound";
 import { Modal } from "./Modal";
 import { BooksShow } from "./BooksShow";
 import { FavoritedShow } from "./FavoritedShow";
+import SearchAPI from "./SearchAPI";
 
 export function Content() {
   const [isBooksShowVisible, setIsBooksShowVisible] = useState(false);
@@ -40,6 +41,8 @@ export function Content() {
     <div className="text-center space-y-5 font-serif">
       {/* <SearchBar /> */}
       <Routes>
+        <Route path="/searchapi" element={<SearchAPI />} />
+
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<LogoutLink />} />
@@ -62,6 +65,7 @@ export function Content() {
         />
       </Routes>
       <nav>
+        <Link to={"/searchapi"}> SEARCH API HERE</Link>
         <Link to={"/books"} className="BooksLink">
           | Books |
         </Link>
