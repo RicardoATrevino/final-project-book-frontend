@@ -63,11 +63,12 @@ export function Content() {
             </div>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <nav>
-        <Link to={"/searchapi"}> Alternate Search! |</Link>
+        <Link to={"/searchapi"}> Alternative Search |</Link>
         <Link to={"/books"} className="BooksLink">
-          | Books |
+          | Our Books |
         </Link>
       </nav>
       <Modal show={isBooksShowVisible} onClose={handleClose}>

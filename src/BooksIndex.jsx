@@ -1,9 +1,7 @@
 /* eslint-disable react/prop-types */
 // search function here
 // https://openlibrary.org/dev/docs/api/search?v=1 using this api bc seems simple enough
-import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
 import AddToFavoritesButton from "./FavoritedItems";
 export default function BooksIndex(props) {
   console.log("props be: ", props);
@@ -44,20 +42,24 @@ export default function BooksIndex(props) {
         )}
 
         <h1>All Our Books!</h1>
-        {props.books.map((books) => (
-          <div key={books.id}>
-            <h2>
-              {books.title} |
-              <AddToFavoritesButton itemId={books.id} />
-            </h2>
-            <p>Author: {books.author_name}</p>
-            <p>Genre: {books.first_publish_year}</p>
-            <button className="text-left" onClick={() => props.onShowBook(books)}>
-              |More Info|
-            </button>
-            {/*---NO ROUTE MATCHED ERROR <Link to={`${books.id}.json`}>More info </Link> */}
-          </div>
-        ))}
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 ">
+          {" "}
+          {props.books.map((books) => (
+            <div className="rounded shadow-lg mb-4 hover:shadow-2xl" key={books.id}>
+              <h2 className="font-bold text-xl">
+                {books.title} |
+                <AddToFavoritesButton itemId={books.id} />
+              </h2>
+              <p>Author: {books.author_name}</p>
+              <p>Published: {books.first_publish_year}</p>
+              <button className="text-left" onClick={() => props.onShowBook(books)}>
+                |More Info|
+              </button>
+              {/*---NO ROUTE MATCHED ERROR <Link to={`${books.id}.json`}>More info </Link> */}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,24 +1,36 @@
 /* eslint-disable react/prop-types */
 import axios from "axios";
+import FadingPopUp from "./FadingPopUp";
+import { useState } from "react";
 
-function AddToFavoritesButton({ itemId }) {
-  console.log(itemId);
+function AddToFavoritesButton({ book }) {
+  const [popupMessage, setPopupMessage] = useState("");
+
+  console.log(book);
   const addToFavorites = () => {
     axios
-      .post("http://localhost:3000/favorite.json", { book_id: itemId })
+      .post("http://localhost:3000/favorite.json", {
+        title: book.title,
+        author_name: book.author_name,
+        first_publish_year: book.first_publish_year,
+      })
       .then((response) => {
         console.log(response.data);
       })
       .catch((error) => {
         console.error("Error adding item to favorites:", error);
       });
+    setPopupMessage(book.title + " has been added to favorites!");
   };
 
   return (
-    <button onClick={addToFavorites}>
-      {" "}
-      <div className=""> | Favorite</div>
-    </button>
+    <div>
+      <button onClick={addToFavorites}>
+        {" "}
+        <div className=""> | Favorite</div>
+      </button>
+      <FadingPopUp message={popupMessage} />{" "}
+    </div>
   );
 }
 
