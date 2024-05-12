@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import AddToFavoritesButton from "./FavoritedItems";
+import FavoritedAPI from "./FavoritedAPI";
 
 function SearchAPI() {
   const [query, setQuery] = useState("");
@@ -35,7 +35,9 @@ function SearchAPI() {
           <p>
             {book.title} - by: {book.author_name}
           </p>
-          <p>Published: {book.publish_year}</p>
+          <p>
+            Published: {book.first_publish_year} <FavoritedAPI>Favorite</FavoritedAPI>
+          </p>
         </div>
       ))}
     </div>

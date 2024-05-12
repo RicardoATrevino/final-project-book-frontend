@@ -29,14 +29,14 @@ export default function BooksIndex(props) {
         {searchFilter && (
           <>
             {props.books
-              .filter((books) => books.title.toLowerCase().includes(searchFilter.toLowerCase()))
+              .filter((books) => books.title && books.title.toLowerCase().includes(searchFilter.toLowerCase()))
               .map((books) => (
                 <div key={books.id} className="text-grey">
                   {" "}
                   <button className="btn btn-primary " onClick={() => props.onShowBook(books)}>
                     {books.title} -
                   </button>
-                  - by: {books.author} ||
+                  - by: {books.author_name} ||
                   <AddToFavoritesButton itemId={books.id} />
                 </div>
               ))}
@@ -50,8 +50,8 @@ export default function BooksIndex(props) {
               {books.title} |
               <AddToFavoritesButton itemId={books.id} />
             </h2>
-            <p>Author: {books.author}</p>
-            <p>Genre: {books.genre}</p>
+            <p>Author: {books.author_name}</p>
+            <p>Genre: {books.first_publish_year}</p>
             <button className="text-left" onClick={() => props.onShowBook(books)}>
               |More Info|
             </button>
