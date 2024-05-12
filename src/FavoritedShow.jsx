@@ -6,7 +6,7 @@ export function FavoritedShow() {
   const [favoriteds, setFavorited] = useState([]);
 
   const handleShowFavoriteds = () => {
-    axios.get("http://localhost:3000/favorited.json").then((response) => {
+    axios.get("/favorited.json").then((response) => {
       console.log("handleShowFavoriteds", response);
       setFavorited(response.data);
       console.log("log 1:", favoriteds, response.data);

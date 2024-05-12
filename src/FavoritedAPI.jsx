@@ -9,7 +9,7 @@ function AddToFavoritesButton({ book }) {
   console.log(book);
   const addToFavorites = () => {
     axios
-      .post("http://localhost:3000/favorite.json", {
+      .post("/favorite.json", {
         title: book.title,
         author_name: book.author_name,
         first_publish_year: book.first_publish_year,

@@ -5,7 +5,7 @@ function AddToFavoritesButton({ itemId }) {
   console.log(itemId);
   const addToFavorites = () => {
     axios
-      .post("http://localhost:3000/favorited.json", { book_id: itemId })
+      .post("/favorited.json", { book_id: itemId })
       .then((response) => {
         // Handle success (e.g., show notification)
         console.log(response.data);

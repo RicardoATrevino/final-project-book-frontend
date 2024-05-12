@@ -30,7 +30,7 @@ export function Content() {
   const [books, setBooks] = useState([]);
   const handleIndexBooks = () => {
     console.log("handleIndexBooks");
-    axios.get("http://localhost:3000/books.json").then((response) => {
+    axios.get("/books.json").then((response) => {
       console.log(response.data);
       setBooks(response.data);
     });

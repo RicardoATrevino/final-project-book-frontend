@@ -8,7 +8,7 @@ function SearchAPI() {
 
   const handleSearch = () => {
     axios
-      .get(`http://localhost:3000/search.json?q=${query}`)
+      .get(`/search.json?q=${query}`)
       .then((response) => {
         setSearchResult(response.data);
         console.log(response.data);
