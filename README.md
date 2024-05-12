@@ -32,11 +32,6 @@ Technologies Used
     Axios
     React Router
     Tailwind CSS
-## Usage
-
-```bash
-rails server
-```
 
 
 ## Roadmap
